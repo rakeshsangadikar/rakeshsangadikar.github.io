@@ -530,6 +530,9 @@ footer span a{
 footer span a:hover{
     text-decoration: underline;
 }
+footer span .version {
+    color: crimson;
+}
 
 
 /* responsive media query start */
@@ -599,6 +602,7 @@ footer span a:hover{
     .about .about-content .right{
         flex: 100%;
     }
+    .teams .education .card,
     .services .serv-content .card{
         width: calc(50% - 10px);
         margin-bottom: 20px;
@@ -623,6 +627,7 @@ footer span a:hover{
     .home .home-content a{
         font-size: 20px;
     }
+    .teams .education .card,
     .services .serv-content .card{
         width: 100%;
     }
