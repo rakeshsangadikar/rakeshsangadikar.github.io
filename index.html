@@ -287,24 +287,30 @@
                 </div>
                 <div class="column right">
                     <div class="text">Message me</div>
-                    <form id="contactForm" method="post" action="contact/sendMail.php">
+                    <form id="contactForm" method="POST">
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
                         <div class="fields">
                             <div class="field name">
-                                <input id="contactName" type="text" placeholder="Name" required>
+                                <input id="contactName" name="name" type="text" placeholder="Name" required>
                             </div>
                             <div class="field email">
-                                <input id="contactEmail" type="email" placeholder="Email" required>
+                                <input id="contactEmail" name="email" type="email" placeholder="abc@xyz.com" required>
                             </div>
                         </div>
                         <div class="field">
-                            <input id="contactSubject" type="text" placeholder="Subject" required>
+                            <input id="contactSubject" name="subject" type="text" placeholder="Subject" required>
                         </div>
                         <div class="field textarea">
-                            <textarea id="contactMessage" cols="30" rows="10" placeholder="Message.."
+                            <textarea id="contactMessage" name="message" cols="30" rows="10" placeholder="Your Message.."
                                 required></textarea>
                         </div>
+                        
                         <div class="button-area">
-                            <button>Send message</button>
+                            <button id="sendMsg" type="submit">Send message</button>
+                        </div>
+                        <div class="successMsg">
+                            <i class="fas fa-check"></i>
+                            <span id="resultMsg"></span>
                         </div>
                     </form>
                 </div>

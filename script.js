@@ -47,4 +47,54 @@ $(document).ready(function(){
         backSpeed: 60,
         loop: true
     });
+
+    $("#sendMsg").click(function(e) {
+        e.preventDefault();
+        if(!validateFormFields()) return;
+        const form = document.getElementById('contactForm');
+        const result = document.getElementById('resultMsg');
+        const formData = new FormData(form);
+        
+        let object = Object.fromEntries(formData);
+        object.access_key = "f29e3307-d14b-4435-8465-fe0185f418a7"; //setting public acces key
+        object.from_name = "Portfolio Message"; // setting from name for email
+        const json = JSON.stringify(object);
+        $(".successMsg").slideDown();
+        result.innerHTML = "Please wait...."
+
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+        .then(async (response) => {
+            let json = await response.json();
+            if (response.status == 200) {
+                result.innerHTML = "Message sent successfully.";
+            } else {
+                console.log(response);
+                result.innerHTML = json.message;
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            result.innerHTML = "Something went wrong!";
+        })
+        .then(function() {
+            form.reset();
+            setTimeout(() => {
+                $(".successMsg").slideUp();
+                result.innerHTML = "";
+            }, 5000);
+        });
+    });
+
+    function validateFormFields() {
+        let msg = "This feature is under maintainance.....";
+        alert(msg);
+        return false;
+    };
 });

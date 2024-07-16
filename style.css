@@ -497,6 +497,16 @@ section .title::after{
   display: flex;
   align-items: center;
 }
+.contact .right form .successMsg {
+    margin-top: 10px;
+    color: crimson;
+    border-radius: 5px;
+    display: none;
+}
+.contact .right form .successMsg span {
+    margin-left: 2px;
+    line-height: 2.5;
+}
 .right form .button-area button{
   color: #fff;
   display: block;
